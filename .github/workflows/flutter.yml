@@ -1,0 +1,38 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/sigil_flutter/**"
+      - "apps/sigil_client/**"
+      - "packages/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/sigil_flutter/**"
+      - "apps/sigil_client/**"
+      - "packages/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install Melos
+        run: dart pub global activate melos
+
+      - name: Bootstrap workspace
+        run: dart pub get
+
+      - name: Analyze
+        run: melos run analyze
+
+      - name: Run tests
+        run: melos run test

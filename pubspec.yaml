@@ -1,0 +1,44 @@
+name: sigil_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+workspace:
+  - apps/sigil_server
+  - apps/sigil_client
+  - apps/sigil_flutter
+  - packages/sigil_lints
+
+dev_dependencies:
+  melos: ^7.5.0
+
+melos:
+  categories:
+    apps:
+      - apps/**
+    packages:
+      - packages/**
+
+  scripts:
+    analyze:
+      description: Run static analysis across all packages.
+      exec: dart analyze
+      packageFilters:
+        dirExists: lib
+
+    test:
+      description: Run tests in all packages.
+      exec: dart test
+      packageFilters:
+        dirExists: test
+
+    format:
+      description: Format all Dart files.
+      exec: dart format .
+      packageFilters:
+        dirExists: lib
+
+    generate:
+      description: Run Serverpod code generation.
+      run: cd apps/sigil_server && serverpod generate

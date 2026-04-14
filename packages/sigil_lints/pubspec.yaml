@@ -1,0 +1,11 @@
+name: sigil_lints
+description: Custom lint rules for the Sigil project.
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+resolution: workspace
+
+dependencies:
+  custom_lint_builder: ^0.8.0

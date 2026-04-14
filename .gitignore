@@ -1,0 +1,48 @@
+# Dart/Flutter
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+
+# Pub
+pubspec.lock
+!apps/sigil_flutter/pubspec.lock
+
+# Generated Serverpod files
+apps/sigil_server/generated/
+apps/sigil_client/lib/src/protocol/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfvars
+!infra/environments/*/terraform.tfvars
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Melos
+.melos/
+
+# FVM
+.fvm/

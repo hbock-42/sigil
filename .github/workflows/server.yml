@@ -1,0 +1,55 @@
+name: Server CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/sigil_server/**"
+      - "apps/sigil_client/**"
+      - "packages/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/sigil_server/**"
+      - "apps/sigil_client/**"
+      - "packages/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: sigil
+          POSTGRES_PASSWORD: sigil_test
+          POSTGRES_DB: sigil
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install Melos
+        run: dart pub global activate melos
+
+      - name: Bootstrap workspace
+        run: dart pub get
+
+      - name: Analyze server
+        working-directory: apps/sigil_server
+        run: dart analyze
+
+      - name: Run server tests
+        working-directory: apps/sigil_server
+        run: dart test
