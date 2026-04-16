@@ -18,6 +18,16 @@ down:
 generate:
     @serverpod generate 2>&1
 
+# Create a database migration after model changes
+[group('codegen')]
+create-migration:
+    serverpod create-migration 2>&1
+
+# Create a repair migration to sync schema with migration system
+[group('codegen')]
+create-repair-migration:
+    serverpod create-repair-migration 2>&1
+
 # Run server tests
 [group('quality')]
 test *args:
