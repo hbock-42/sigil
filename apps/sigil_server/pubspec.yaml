@@ -13,8 +13,11 @@ dependencies:
   serverpod_auth_idp_server: 3.4.7
 
 dev_dependencies:
-  lints: '>=3.0.0 <7.0.0'
+  custom_lint:
+  very_good_analysis: ^7.0.0
   serverpod_test: 3.4.7
+  sigil_lints:
+    path: ../../packages/sigil_lints
   test: ^1.25.5
 
 serverpod:

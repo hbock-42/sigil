@@ -35,9 +35,12 @@ dependencies:
   serverpod_auth_idp_flutter: 3.4.7
 
 dev_dependencies:
-  flutter_lints: '>=3.0.0 <7.0.0'
+  custom_lint:
+  very_good_analysis: ^7.0.0
   flutter_test:
     sdk: flutter
+  sigil_lints:
+    path: ../../packages/sigil_lints
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
