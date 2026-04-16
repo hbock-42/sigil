@@ -17,6 +17,23 @@ Defined in `mod.just`. Run `just --list flutter` to list them.
 - `assets/config.json` — App configuration
 - `pubspec.yaml` — Dependencies (uses workspace resolution)
 
-## Skills
+## Architecture
 
-No Flutter-scoped skills yet. Add them in `apps/sigil_flutter/.agents/skills/`.
+4-layer DDD feature structure:
+```
+lib/src/features/<name>/
+├── domain/          # Pure Dart: models, repositories (interfaces), failures
+├── infrastructure/  # Implements domain interfaces, talks to Serverpod
+├── application/     # Riverpod notifiers orchestrating domain logic
+└── presentation/    # Flutter widgets (HookConsumerWidget), Forui components
+```
+
+## Skills (`.agents/skills/`)
+
+| Skill | When to use |
+|-------|-------------|
+| `flutter-conventions` | Writing or reviewing Flutter/Dart code |
+| `riverpod` | State management, providers, notifiers |
+| `ui` | Forui widgets, theming, layout |
+| `feature-scaffold` | Adding a new feature or screen |
+| `marionette` | Visual verification — launching app, taking screenshots, interacting with UI |

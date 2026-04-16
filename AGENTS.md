@@ -24,6 +24,8 @@ To add or update skills, load `skill-architect` first.
 |-------|-------------|
 | `skill-architect` | Creating new skills, updating AGENTS.md or existing skills |
 | `git` | Branching, commits, git workflow |
+| `fpdart` | Error handling with Either/TaskEither/Option, no try/catch outside infrastructure |
+| `domain-modeling` | Freezed data classes, value objects, parse-don't-validate |
 
 ## Commands
 

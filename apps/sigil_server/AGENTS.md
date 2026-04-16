@@ -19,6 +19,8 @@ Defined in `mod.just`. Run `just --list server` to list them.
 - `lib/src/` — Server source code
 - `migrations/` — Database migrations
 
-## Skills
+## Skills (`.agents/skills/`)
 
-No server-scoped skills yet. Add them in `apps/sigil_server/.agents/skills/`.
+| Skill | When to use |
+|-------|-------------|
+| `feature-scaffold` | Adding a new server feature or endpoint |
